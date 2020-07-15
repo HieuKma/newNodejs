@@ -10,6 +10,8 @@ const FileSync = require('lowdb/adapters/FileSync');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
 
+const shortid = require('shortid');
+
 app.set('views', './views');
 app.set('view engine', 'pug');
 
@@ -43,9 +45,19 @@ app.get('/users/search', (req, res) => {
 
 app.get('/users/create', (req, res) => {
     res.render('users/create');
-})
+});
+
+app.get('/users/:id', (req, res) => {
+    var id = req.params.id;
+    var user = db.get('users').find({ id: id }).value();
+
+    res.render('users/view', {
+        user: user
+    })
+});
 
 app.post('/users/create', (req, res) => {
+    req.body.id = shortid.generate();
     db.get('users').push(req.body).write();
     res.redirect('/users');
 });

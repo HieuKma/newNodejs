@@ -1,12 +1,21 @@
-h1 Users list ...
+//- users render tu file nay
+h1 Users List ne !!!
 
-a(href="/users/create") New
+a(href="/users/create") NEW
+br
 br
 
-form(action="/users/search")
-    input(type="text" placeholder="nhap" name="q")
-    button Search
+form(action="/users/search", method="get")
 
+    input(type="text" placeholder="Search" name="q" ) 
+    button Search
+    //- luu gia tri can tim vao q
+hr
+//- show list users
 ul
     each user in users
-        li= user.name
+        li
+            span= user.name
+            span &nbsp
+            a(href="/users/" + user.id) View
+
