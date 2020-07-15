@@ -1,0 +1,12 @@
+h1 Users list ...
+
+a(href="/users/create") New
+br
+
+form(action="/users/search")
+    input(type="text" placeholder="nhap" name="q")
+    button Search
+
+ul
+    each user in users
+        li= user.name
