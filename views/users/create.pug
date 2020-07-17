@@ -1,6 +1,11 @@
-h1 Create new user
+html
+    head
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css")
+    body
 
-form(action="/users/create" method="post")
-    span Name 
-    input(type="text" placeholder="input" name="name")
-    button Create
+        h1 Create new user
+
+        form(action="/users/create" method="post")
+            span Name 
+            input(type="text" placeholder="input" name="name")
+            button Create

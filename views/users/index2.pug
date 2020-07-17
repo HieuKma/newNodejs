@@ -1,21 +1,23 @@
-//- users render tu file nay
-h1 Users List ne !!!
+html
+    head
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css")
+    body
+        h1 Users List ne !!!
 
-a(href="/users/create") NEW
-br
-br
+        a.btn.btn-outline-primary(href="/users/create") NEW
+        br
+        br
 
-form(action="/users/search", method="get")
-
-    input(type="text" placeholder="Search" name="q" ) 
-    button Search
-    //- luu gia tri can tim vao q
-hr
-//- show list users
-ul
-    each user in users
-        li
-            span= user.name
-            span &nbsp
-            a(href="/users/" + user.id) View
+        form.d-flex(action="/users/search", method="get")
+            input.form-control(type="text" placeholder="Search" name="q" ) 
+            button.btn.btn-primary.ml-3 Search
+            //- luu gia tri can tim vao q
+        hr
+        //- show list users
+        ul
+            each user in users
+                li
+                    span= user.name
+                    span &nbsp
+                    a(href="/users/" + user.id) View
 
